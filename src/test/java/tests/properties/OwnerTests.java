@@ -1,4 +1,4 @@
-package properties;
+package tests.properties;
 
 import config.CredentialsConfig;
 

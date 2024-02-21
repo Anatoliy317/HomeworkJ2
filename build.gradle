@@ -52,8 +52,8 @@ task smoke_test(type: Test) {
     }
 }
 
-task registration_test(type: Test) {
+task property2_test(type: Test) {
     useJUnitPlatform {
-        includeTags("registration")
+        includeTags("property2")
     }
 }
