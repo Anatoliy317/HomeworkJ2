@@ -30,7 +30,9 @@ public class RegistrationForm extends TestBase {
         @Tag("smoke")
         @DisplayName("Заполнение всех полей формы регистрации")
         void successfulRegistrationTest() {
+
             ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
+
             step("Открытие формы регистрации",()-> {
                 open("/automation-practice-form");
                 $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -64,8 +66,8 @@ public class RegistrationForm extends TestBase {
             step("Проверка полей регистрации",()->{
                 $(".modal-dialog").should(appear);
                 $("#example-modal-sizes-title-lg").shouldHave(text("Thanks for submitting the form"));
-                $(".table-responsive").shouldHave(text("Alex"), text("Egorov"),
-                        text("alex@egorov.com"), text("1234567890"));
+                $(".table-responsive").shouldHave(text(projectConfig.firstName()), text(projectConfig.lastName()),
+                        text(projectConfig.email()), text("1234567890"));
             });
         }
 }
