@@ -1,7 +1,9 @@
 package tests;
 
 import com.codeborne.selenide.SelenideElement;
+import config.ProjectConfig;
 import helpers.Attach;
+import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.*;
 
 
@@ -28,6 +30,7 @@ public class RegistrationForm extends TestBase {
         @Tag("smoke")
         @DisplayName("Заполнение всех полей формы регистрации")
         void successfulRegistrationTest() {
+            ProjectConfig projectConfig = ConfigFactory.create(ProjectConfig.class);
             step("Открытие формы регистрации",()-> {
                 open("/automation-practice-form");
                 $(".practice-form-wrapper").shouldHave(text("Student Registration Form"));
@@ -39,9 +42,9 @@ public class RegistrationForm extends TestBase {
                 executeJavaScript("$('footer').remove()");
             });
             step("Заполнение полей",()->{
-                $("#firstName").setValue("Alex");
-                $("#lastName").setValue("Egorov");
-                $("#userEmail").setValue("alex@egorov.com");
+                $("#firstName").setValue(projectConfig.firstName());
+                $("#lastName").setValue(projectConfig.lastName());
+                $("#userEmail").setValue(projectConfig.email());
                 $("#genterWrapper").$(byText("Other")).click();
                 $("#userNumber").setValue("1234567890");
                 $("#dateOfBirthInput").click();
