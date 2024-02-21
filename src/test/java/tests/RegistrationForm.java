@@ -24,8 +24,6 @@ public class RegistrationForm extends TestBase {
         Attach.addVideo();
 
     }
-
-
         @Test
         @Tag("smoke")
         @DisplayName("Заполнение всех полей формы регистрации")
