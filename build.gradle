@@ -57,3 +57,13 @@ task property2_test(type: Test) {
         includeTags("property2")
     }
 }
+task owner1_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("owner1")
+        }
+}
+task owner3_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("owner3")
+    }
+}
